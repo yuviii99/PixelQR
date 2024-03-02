@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request, url_for, redirect, send_from_directory
 import os
 
-app = Flask(__name__)
+app = Flask(__name__, static_url_path='/uploads', static_folder='uploads')
 
 
 @app.route('/')
@@ -22,8 +22,9 @@ def images():
     if os.path.exists(upload_folder):
         user_folder = os.path.join(upload_folder, user_uuid)
         files = os.listdir(user_folder)
-        files_url = [user_folder + "/" + file.replace("%", " ") for file in files]
-        return render_template("images.html", files=files_url, event_name=event_name)
+        print(type(files[0]))
+        files_url = [os.path.join(user_folder, file.replace("%", " ")) for file in files]
+        return render_template("images.html", files=files_url, event_name=event_name.replace("_", " "))
     else:
         return "No images have been uploaded yet, check again later!"
 
@@ -44,5 +45,3 @@ def upload():
 
 if __name__ == '__main__':
     app.run(debug=True, port=8000)
-
-
