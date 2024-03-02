@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{{event_name}}</title>
+</head>
+<body>
+    <p>Scan the QR and enter the unique ID below to get your images</p>
+    <form action="/images" method="post" enctype="multipart/form-data" id="uuid">
+        <label for="unique_id">Unique ID</label>
+        <input type="text" id="unique_id" name="unique_id" placeholder="Scan the QR">
+        <input type="submit" value="Get Images">
+    </form>
+</body>
+</html>

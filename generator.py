@@ -12,7 +12,7 @@ def generate_qr(file_path, event_name, qr_uuid_list):
 def generateUUID(event_name):
     id = uuid.uuid4()
     print(type(id))
-    return str(id) + "_" + event_name
+    return event_name + "-" + str(id)
 
 
 if __name__ == '__main__':
